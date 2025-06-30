@@ -1,17 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Post from '.';
-import PostComment from '.';
-
-
-jest.mock('../../models/Comment', () => {
-  return jest.fn((id: number, comment: string) => ({
-    id: id,
-    comment: comment,
-  }));
-});
 
 describe('Teste para o componente de Comentários (Post ou PostComments)', () => {
-
     it('Deve renderizar o componente corretamente', () => {
         render(<Post />);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
@@ -57,7 +47,6 @@ describe('Teste para o componente de Comentários (Post ou PostComments)', () =>
 
         const textarea = screen.getByTestId('comment-textarea');
         const submitButton = screen.getByTestId('submit-comment-button');
-        const commentsList = screen.getByTestId('comments-list');
 
         expect(screen.getByTestId('no-comments-message')).toBeInTheDocument();
 
